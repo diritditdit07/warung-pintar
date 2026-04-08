@@ -1,0 +1,5 @@
+[functions.warung-login]
+verify_jwt = false
+
+[functions.warung-data]
+verify_jwt = false
