@@ -250,8 +250,7 @@ export default function App() {
       const { sale } = await invokeWarungAction(authSession, 'create-sale', transaction);
       setSales((currentSales) => [sale, ...currentSales]);
       setCartMap({});
-      setToastMessage('Transaksi berhasil disimpan');
-      setScreen('home');
+      setToastMessage('✅ Transaksi berhasil disimpan!');
     } catch (error) {
       setToastMessage(error instanceof Error ? error.message : 'Gagal simpan transaksi');
     }
@@ -482,6 +481,8 @@ export default function App() {
         {screen === 'home' && (
           <HomeDashboard
             profit={profit}
+            totalSales={totalSales}
+            totalExpenses={totalExpenses}
             onNavigate={setScreen}
             todayLabel={formatTodayLabel()}
             storeName={storeName}

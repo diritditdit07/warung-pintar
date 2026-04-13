@@ -26,12 +26,7 @@ export default function SalesPage({
         ))}
       </div>
 
-      <div className="summary-card">
-        <div className="summary-card__row">
-          <span>Jumlah Item</span>
-          <strong>{cartItems.length}</strong>
-        </div>
-
+      <div className="cart-section">
         <div className="cart-list">
           {cartItems.length > 0 ? (
             cartItems.map((item) => (
@@ -50,21 +45,28 @@ export default function SalesPage({
                   <strong>{formatRupiah(item.quantity * item.price)}</strong>
                 </div>
 
-                <span className="cart-list__hint">Tap untuk kurangi</span>
+                <span className="cart-list__hint">−</span>
               </button>
             ))
           ) : (
-            <p className="empty-state">Belum ada pesanan.</p>
+            <p className="empty-state">Belum ada pesanan. Pilih menu di atas.</p>
           )}
         </div>
+      </div>
 
-        <div className="summary-card__row summary-card__row--total">
+      {/* Sticky checkout bar — selalu terlihat di bawah */}
+      <div className="pay-sticky-bar">
+        <div className="pay-sticky-bar__total">
           <span>Total</span>
           <strong>{formatRupiah(total)}</strong>
         </div>
-
-        <button type="button" className="pay-button" onClick={onCheckout} disabled={cartItems.length === 0}>
-          Bayar
+        <button
+          type="button"
+          className="pay-sticky-button"
+          onClick={onCheckout}
+          disabled={cartItems.length === 0}
+        >
+          💳 Bayar
         </button>
       </div>
     </ScreenLayout>

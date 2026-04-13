@@ -3,7 +3,7 @@ export default function ScreenLayout({ title, subtitle, onBack, children }) {
     <section className="screen-card">
       <div className="screen-card__header">
         <button type="button" className="back-button" onClick={onBack}>
-          Beranda
+          ← Beranda
         </button>
         <div>
           <h2>{title}</h2>
