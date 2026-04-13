@@ -246,14 +246,11 @@ export default function App() {
       total: cartTotal
     };
 
-    try {
-      const { sale } = await invokeWarungAction(authSession, 'create-sale', transaction);
-      setSales((currentSales) => [sale, ...currentSales]);
-      setCartMap({});
-      setToastMessage('✅ Transaksi berhasil disimpan!');
-    } catch (error) {
-      setToastMessage(error instanceof Error ? error.message : 'Gagal simpan transaksi');
-    }
+    // Let errors propagate to SalesPage (shown in payment modal)
+    const { sale } = await invokeWarungAction(authSession, 'create-sale', transaction);
+    setSales((currentSales) => [sale, ...currentSales]);
+    setCartMap({});
+    setToastMessage('✅ Transaksi berhasil disimpan!');
   }
 
   async function handleSaveExpense(event) {
@@ -530,6 +527,7 @@ export default function App() {
             onPeriodChange={setReportPeriod}
             onDeleteSale={handleDeleteSale}
             onDeleteExpense={handleDeleteExpense}
+            storeName={storeName}
             onBack={() => setScreen('home')}
           />
         )}
