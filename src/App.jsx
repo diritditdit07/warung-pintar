@@ -527,7 +527,6 @@ export default function App() {
             onPeriodChange={setReportPeriod}
             onDeleteSale={handleDeleteSale}
             onDeleteExpense={handleDeleteExpense}
-            storeName={storeName}
             onBack={() => setScreen('home')}
           />
         )}
